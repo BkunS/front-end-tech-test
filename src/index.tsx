@@ -1,15 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './reset.css';
-import './styles.css';
+// sort-imports-ignore
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+
+import App from './App'
+import './styles/tailwind.css'
+import './styles/reset.css'
+import './styles/styles.css'
+
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>,
+)
