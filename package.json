@@ -1,20 +1,14 @@
 {
   "name": "front-end-tech-test",
   "version": "0.1.0",
+  "author": "david-sun",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.2.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.0",
-    "@types/node": "^16.11.33",
-    "@types/react": "^18.0.8",
-    "@types/react-dom": "^18.0.3",
+    "@ethersproject/abi": "^5.8.0",
+    "clsx": "^2.1.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.6.4",
-    "web-vitals": "^2.1.4"
+    "tailwind-merge": "^3.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,5 +33,25 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/jest": "^27.5.0",
+    "@types/node": "^16.11.33",
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.3",
+    "@typescript-eslint/parser": "^5.62.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^3.4.18",
+    "typescript": "^4.6.4",
+    "web-vitals": "^2.1.4"
   }
 }
