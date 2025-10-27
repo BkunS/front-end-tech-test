@@ -1,34 +1,39 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useMemo } from 'react'
 
-// import { Interface, format } from "@ethersproject/abi"
-import xvsAbi from 'assets/xvsAbi.json'
+import { useBalanceOf, useDecimals } from 'services/requests'
+import { TREASURY_ACCOUNT_ADDRESS } from 'utils/config'
+import { removeTrailingZeroThenFormat, weiToAmount } from 'utils/number'
 
 export const useBalanceData = () => {
-	const [amount, setAmount] = useState('0')
-	const [loading, setLoading] = useState(false)
+	const { data: decimals, isLoading: decimalsLoading, refetch: refetchDecimals, isFetching: decimalsFetching } = useDecimals()
+	const {
+		data: balance,
+		isLoading: balanceLoading,
+		refetch: refetchBalance,
+		isFetching: balanceFetching,
+	} = useBalanceOf(TREASURY_ACCOUNT_ADDRESS)
 
-	const balanceOf = useMemo(() => xvsAbi?.find((item) => item.name === 'balanceOf'), [])
-	console.log(balanceOf)
-
-	const fetchData = useCallback(async () => {
+	const amount = useMemo(() => {
 		try {
-			setLoading(true)
-			// TODO: 
-			setAmount('1')
-		} catch (err) {
-			console.warn(err)
-		} finally {
-			setLoading(false)
+			if (balance == null) return '--'
+			return removeTrailingZeroThenFormat(weiToAmount(balance?.toString(), decimals))
+		} catch (_) {
+			return '--'
 		}
-	}, [])
+	}, [balance, decimals])
 
-	useEffect(() => {
-		fetchData()
-	}, [])
+	const loading = useMemo(
+		() => decimalsLoading || balanceLoading || decimalsFetching || balanceFetching,
+		[balanceFetching, balanceLoading, decimalsFetching, decimalsLoading],
+	)
+	const refetch = useCallback(() => {
+		refetchDecimals()
+		refetchBalance()
+	}, [refetchBalance, refetchDecimals])
 
 	return {
 		amount,
 		loading,
-		refetch: fetchData,
+		refetch,
 	}
 }

@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
 	root: true,
 	env: {
 		es6: true,
@@ -23,9 +23,12 @@ module.exports = {
 		},
 	},
 	rules: {
+		'no-unused-vars': 1,
 		'no-console': 1,
 		'react/prop-types': [1, { ignore: ['children', 'className'] }],
 		'react/react-in-jsx-scope': 'off',
 		'react/jsx-uses-react': 'off',
 	},
 }
+
+export default config

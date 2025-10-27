@@ -12,10 +12,7 @@ const config = {
 	printWidth: 100,
 	bracketSpacing: true,
 
-	plugins: [
-		'@trivago/prettier-plugin-sort-imports',
-		'prettier-plugin-tailwindcss',
-	],
+	plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
 	importOrder: [
 		'^react(.*)$',
 		'<BUILTIN_MODULES>',
@@ -29,4 +26,4 @@ const config = {
 	importOrderCaseInsensitive: true,
 }
 
-module.exports = config
+export default config

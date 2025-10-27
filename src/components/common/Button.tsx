@@ -5,7 +5,7 @@ import { clx } from 'utils/clx'
 type ButtonProps = HTMLAttributes<HTMLButtonElement> & { loading?: boolean }
 
 const baseClassName =
-	'flex text-[16px] font-[600] rounded-[8px] gap-[12px] bg-[#3A78FF] justify-center items-center px-[24px] py-[12px] hover:cursor-pointer hover:opacity-80 duration-200'
+	'flex text-[16px] font-[600] rounded-[8px] gap-[12px] bg-[#3A78FF] justify-center items-center px-[24px] py-[12px] hover:cursor-pointer hover:opacity-80 duration-150'
 
 export const Button: FC<ButtonProps> = memo(({ loading, children, className, ...props }) => {
 	return (
@@ -13,14 +13,15 @@ export const Button: FC<ButtonProps> = memo(({ loading, children, className, ...
 			className={clx(
 				baseClassName,
 				{
-					['hover:cursor-not-allowed']: loading,
-					['opacity-[60]']: loading,
+					'hover:cursor-not-allowed': loading,
+					'hover:opacity-40': loading,
+					'opacity-40': loading,
 				},
 				className,
 			)}
 			{...props}
 		>
-			{loading ? 'Loading' : children}
+			{loading ? 'Loading...' : children}
 		</button>
 	)
 })
